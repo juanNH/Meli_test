@@ -1,0 +1,54 @@
+// Variables
+$background-color: #FFE600;
+$primary-color: #333;
+$button-color: #909090;
+
+// Mixins
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// AppBar styles
+.appbar {
+  background-color: $background-color;
+  padding: 0 20%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  .appbar-container {
+    @include flex-center;
+
+    
+    .appbar-logo{
+      img{
+        padding: 0.5rem 1.5rem;
+      }
+    }
+    .appbar-search {
+      @include flex-center;
+      flex: 1;
+      height: 100%;
+      .search-input {
+        padding: 0.8rem;
+        border: 1px solid $primary-color;
+        border-radius: 5px 0 5px 5x;
+        font-size: 1em;
+        width: 100%;
+        height: 100%;
+        &:focus {
+          outline: none;
+        }
+      }
+
+      .search-button {
+        background-color: $button-color;
+        border: none;
+        padding: 0.8rem;
+        border-radius: 0 5px 5px 0;
+        cursor: pointer;
+        height: 100%;
+      }
+    }
+  }
+}
