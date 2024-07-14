@@ -20,7 +20,7 @@ class ItemsService {
       (avaiableFilter) => avaiableFilter.id === "category"
     );
     if (filter) {
-      filter.values.forEach((c) => {
+      filter.values.sort((a, b) => b.results - a.results).forEach((c) => {
         categories.push(c.name);
       });
     }

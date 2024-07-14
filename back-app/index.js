@@ -1,13 +1,22 @@
 const express = require('express');
 const dotenv = require('dotenv');
+const cors = require('cors');
+
 const errorHandler = require('./src/middleware/errorHandler');
 dotenv.config();
 
 
 const app = express();
 const port = process.env.PORT;
+app.use(cors());
 
+const corsOptions = {
+  origin: '*',//'http://localhost:3000', 
+  methods: ['GET'], 
+  allowedHeaders: ['Content-Type'], 
+};
 
+app.use(cors(corsOptions));
 
 const routerV1 = require('./src/v1/indexRouter');
 app.use("/api/v1",routerV1);
