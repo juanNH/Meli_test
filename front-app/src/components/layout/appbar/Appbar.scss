@@ -1,26 +1,30 @@
-// Variables
 $background-color: #FFE600;
 $primary-color: #333;
-$button-color: #909090;
+$button-color: #c0c0c0;
 
-// Mixins
 @mixin flex-center {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-// AppBar styles
 .appbar {
   background-color: $background-color;
   padding: 0 20%;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  @media (max-width: 992px) {
+    padding: 0 10%;
+  }
 
+  @media (max-width: 768px) {
+    padding: 0;
+  }
   .appbar-container {
     @include flex-center;
 
     
     .appbar-logo{
+      cursor: pointer;
       img{
         padding: 0.5rem 1.5rem;
       }
@@ -31,7 +35,7 @@ $button-color: #909090;
       height: 100%;
       .search-input {
         padding: 0.8rem;
-        border: 1px solid $primary-color;
+        border: none;
         border-radius: 5px 0 5px 5x;
         font-size: 1em;
         width: 100%;
