@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import { Item } from "./../item/Item";
+import {priceFormat } from './../../../../helpers';
 import "./ItemsList.scss";
 export const ItemList = ({ items, isLoading }) => {
   if (isLoading) {
@@ -14,7 +15,7 @@ export const ItemList = ({ items, isLoading }) => {
   return (
     <div className="product-list">
       {items.map((item) => {
-        const price =
+        const price = priceFormat(item.price.amount, item.price.decimals)
           item.price.decimals === "00"
             ? item.price.amount
             : Number(
