@@ -13,16 +13,21 @@ class ItemsService {
     const responseItems = await this.itemRepository.getAllItems(
       searchParamsDto
     );
-    const author = new Author({ name: "Juan", lastname: "Herrera" });
+    const author = new Author({
+      name: searchParamsDto.author.name,
+      lastname: searchParamsDto.author.lastname,
+    });
     const categories = [];
     const items = [];
     const filter = responseItems.available_filters.find(
       (avaiableFilter) => avaiableFilter.id === "category"
     );
     if (filter) {
-      filter.values.sort((a, b) => b.results - a.results).forEach((c) => {
-        categories.push(c.name);
-      });
+      filter.values
+        .sort((a, b) => b.results - a.results)
+        .forEach((c) => {
+          categories.push(c.name);
+        });
     }
     for (const result of responseItems.results) {
       const condition = result.attributes.find(
@@ -47,15 +52,13 @@ class ItemsService {
     return itemsResponse;
   }
   async getItemById(getByIdDto) {
-    const detailPromise =  this.itemRepository.getItemDetailById(getByIdDto);
+    const detailPromise = this.itemRepository.getItemDetailById(getByIdDto);
     const itemPromise = this.itemRepository.getItemById(getByIdDto);
-     const [itemData, detailData] = await Promise.all([
+    const [itemData, detailData] = await Promise.all([
       itemPromise,
       detailPromise,
     ]);
-    const { number: amount, decimal } = getNumberAndDecimal(
-      itemData.price
-    );
+    const { number: amount, decimal } = getNumberAndDecimal(itemData.price);
     const condition = itemData.attributes.find(
       (at) => at.id === "ITEM_CONDITION"
     );
@@ -73,7 +76,10 @@ class ItemsService {
       sold_quantity: itemData.initial_quantity,
       description: detailData.plain_text,
     });
-    const author = new Author({ name: "Juan", lastname: "Herrera" });
+    const author = new Author({
+      name: searchParamsDto.author.name,
+      lastname: searchParamsDto.author.lastname,
+    });
     const item = new ItemDetailResponse({ item: itemDetail, author });
     return item;
   }
