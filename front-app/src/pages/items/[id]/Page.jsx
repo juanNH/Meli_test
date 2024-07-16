@@ -3,15 +3,13 @@ import { formatNumber } from "./../../../helpers";
 import { ProductImage } from "./components/productImage/ProductImage";
 import { ProductData } from "./components/productData/ProductData";
 import { ProductDescription } from "./components/productDescription/ProductDescription";
-
 import "./Page.scss";
 const Page = () => {
   const { item, isLoading } = useItem();
-  console.log(item, isLoading);
   if (!item || isLoading) {
     return (
       <div className="product-view">
-        <div className="skeleton"></div>
+        <div className="skeleton" data-testid="skeleton-loader"></div>
       </div>
     );
   }

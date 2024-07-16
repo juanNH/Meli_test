@@ -77,8 +77,8 @@ class ItemsService {
       description: detailData.plain_text,
     });
     const author = new Author({
-      name: searchParamsDto.author.name,
-      lastname: searchParamsDto.author.lastname,
+      name: getByIdDto.author.name,
+      lastname: getByIdDto.author.lastname,
     });
     const item = new ItemDetailResponse({ item: itemDetail, author });
     return item;
