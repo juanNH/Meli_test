@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect } from "react";
 import { useQuery } from "./useQuery";
-export const useItems = ({ limit }) => {
+export const useItems = () => {
   const query = useQuery();
   const search = query.get("search");
   const [items, setItems] = useState();
@@ -9,9 +9,7 @@ export const useItems = ({ limit }) => {
   const searchItems = (abortController) => {
     setIsLoading(true);
     fetch(
-      import.meta.env.VITE_BACK_URL +
-        "/v1/items?" +
-        new URLSearchParams({ q: search }),
+      process.env.API_URL + "/v1/items?" + new URLSearchParams({ q: search }),
       {
         method: "GET",
         signal: abortController.signal,
@@ -22,20 +20,17 @@ export const useItems = ({ limit }) => {
           return response
             .json()
             .then((jsonResponse) => {
-              setItems({
-                ...jsonResponse,
-                items: limit ? jsonResponse.items.slice(0,limit) : jsonResponse.items,
-              });
+              setItems(jsonResponse);
             })
             .catch((error) => {
-              throw new Error(`Error to parse data to json: ${error.message}`);
+              console.error(`Error to parse data to json: ${error.message}`);
             });
         }
       })
       .catch((error) => {
-        throw new Error(`Error to get items from Server API: ${error.message}`);
+        console.error(`Error to get items from Server API: ${error.message}`);
       })
-      .finally(()=>{
+      .finally(() => {
         setIsLoading(false);
       });
   };
@@ -47,5 +42,5 @@ export const useItems = ({ limit }) => {
     };
   }, [search]);
 
-  return { items,isLoading };
+  return { items, isLoading };
 };

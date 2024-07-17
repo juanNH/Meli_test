@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
-import Page from "./Page";
-import { useItem } from "./../../../hooks";
-import { formatNumber } from "./../../../helpers";
+import Page from "./PageItemId";
+import { useItem } from "../../../hooks";
+import { formatNumber } from "../../../helpers";
 
 // Mocking the useItem hook
 jest.mock("./../../../hooks", () => ({

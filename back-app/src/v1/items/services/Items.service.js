@@ -29,7 +29,7 @@ class ItemsService {
           categories.push(c.name);
         });
     }
-    for (const result of responseItems.results) {
+    for (const result of responseItems.results.slice(0, 4)) {
       const condition = result.attributes.find(
         (at) => at.id === "ITEM_CONDITION"
       );

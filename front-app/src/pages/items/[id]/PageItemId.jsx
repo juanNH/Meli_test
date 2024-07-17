@@ -1,10 +1,10 @@
-import { useItem } from "./../../../hooks";
-import { formatNumber } from "./../../../helpers";
+import { useItem } from "../../../hooks";
+import { formatNumber } from "../../../helpers";
 import { ProductImage } from "./components/productImage/ProductImage";
 import { ProductData } from "./components/productData/ProductData";
 import { ProductDescription } from "./components/productDescription/ProductDescription";
-import "./Page.scss";
-const Page = () => {
+import "./PageItemId.scss";
+const PageItemId = () => {
   const { item, isLoading } = useItem();
   if (!item || isLoading) {
     return (
@@ -31,4 +31,4 @@ const Page = () => {
     </div>
   );
 };
-export default Page;
+export default PageItemId;

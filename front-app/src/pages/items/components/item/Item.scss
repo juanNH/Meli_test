@@ -19,25 +19,28 @@ $shadow-color: rgba(0, 0, 0, 0.1);
   box-shadow: 0 2px 4px $shadow-color;
   background-color: $background-color;
 
+  
+  .product-details{
+    flex:2
+  }
   .product-image,
-  .product-details,
-  .product-price {
+  .product-condition {
     flex: 1;
   }
 
   .product-image {
     text-align: center;
-
+    padding:1rem;
     img {
-      max-width: 100px;
       height: auto;
+      width: 50%;
     }
   }
 
   .product-details {
     padding: 0 20px;
 
-    .product-title {
+    .product-price {
       font-weight: bold;
       margin-bottom: 5px;
     }
@@ -47,10 +50,10 @@ $shadow-color: rgba(0, 0, 0, 0.1);
     }
   }
 
-  .product-price {
-    text-align: right;
+  .product-condition {
+    text-align: center;
     font-weight: bold;
-    color: $text-color;
+    color: #a0a0a0;
   }
 }
 
@@ -61,14 +64,14 @@ $shadow-color: rgba(0, 0, 0, 0.1);
 
     .product-image,
     .product-details,
-    .product-price {
+    .product-condition {
       flex: none;
       width: 100%;
       text-align: left;
       margin-bottom: 10px;
     }
 
-    .product-price {
+    .product-condition {
       text-align: left;
     }
   }

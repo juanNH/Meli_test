@@ -29,7 +29,6 @@ describe("Breadcrumb Component", () => {
     const categoryElement = screen.getByText(categories[0]);
     expect(categoryElement).toBeInTheDocument();
 
-    // Check that separator is not rendered
     const separator = screen.queryByText(">");
     expect(separator).toBeNull();
   });
@@ -38,14 +37,12 @@ describe("Breadcrumb Component", () => {
     const categories = [];
     const { container } = render(<Breadcrumb categories={categories} />);
 
-    // Check that breadcrumb renders without any items
     const breadcrumb = container.querySelector(".breadcrumb");
     expect(breadcrumb).toBeInTheDocument();
     expect(breadcrumb.children.length).toBe(0);
   });
 
   it("throws error if categories prop is not provided", () => {
-    // Suppress prop types warnings during the test
     const propTypesError = jest.spyOn(console, "error");
     propTypesError.mockImplementation(() => {});
 

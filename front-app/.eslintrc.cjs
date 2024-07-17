@@ -1,6 +1,7 @@
 module.exports = {
   root: true,
   env: { browser: true, es2020: true, jest:true },
+  node:true,
   extends: [
     'eslint:recommended',
     'plugin:react/recommended',
@@ -18,4 +19,7 @@ module.exports = {
       { allowConstantExport: true },
     ],
   },
+/*   globals: {
+    global: "readonly"
+  } */
 }

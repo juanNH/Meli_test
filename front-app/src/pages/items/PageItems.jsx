@@ -1,9 +1,9 @@
 import { Breadcrumb } from "../../components/commons";
-import { useItems } from "./../../hooks";
+import { useItems } from "../../hooks";
 import { ItemList } from "./components/ItemsList/ItemList";
-const Page = () => {
-  const { items, isLoading } = useItems({ limit: 4 });
-
+const PageItems = () => {
+  const { items, isLoading } = useItems();
+  
   return (
     <>
       <Breadcrumb categories={items?.categories || []} />
@@ -11,4 +11,4 @@ const Page = () => {
     </>
   );
 };
-export default Page;
+export default PageItems;

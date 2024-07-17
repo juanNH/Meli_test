@@ -10,6 +10,7 @@ export const interceptor = async () => {
       'Author-Info': authorInfo,
       'Content-Type': 'application/json'
     };
+    console.log('Intercepted request:', resource)
     const response = await originalFetch(resource, config);
     return response;
   };

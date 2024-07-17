@@ -8,14 +8,10 @@ export const useItem = () => {
   const [isLoading, setIsLoading] = useState(true);
   const searchItems = (abortController) => {
     setIsLoading(true);
-    fetch(
-      import.meta.env.VITE_BACK_URL +
-        "/v1/items/"+id,
-      {
-        method: "GET",
-        signal: abortController.signal,
-      }
-    )
+    fetch(process.env.API_URL + "/v1/items/" + id, {
+      method: "GET",
+      signal: abortController.signal,
+    })
       .then((response) => {
         if (response.ok) {
           return response
@@ -24,12 +20,12 @@ export const useItem = () => {
               setItem(jsonResponse);
             })
             .catch((error) => {
-              throw new Error(`Error to parse data to json: ${error.message}`);
+              console.error(`Error to parse data to json: ${error.message}`);
             });
         }
       })
       .catch((error) => {
-        throw new Error(`Error to get items from Server API: ${error.message}`);
+        console.error(`Error to get items from Server API: ${error.message}`);
       })
       .finally(() => {
         setIsLoading(false);

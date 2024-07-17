@@ -7,7 +7,7 @@ export const ItemList = ({ items, isLoading }) => {
     return (
       <div className="product-list">
         {Array.from({ length: 4 }).map((_, index) => (
-          <div className="skeleton-item" key={index} />
+          <div className="skeleton-item" key={index} data-testid="skeleton-item"/>
         ))}
       </div>
     );
@@ -16,13 +16,6 @@ export const ItemList = ({ items, isLoading }) => {
     <div className="product-list">
       {items.map((item) => {
         const price = priceFormat(item.price.amount, item.price.decimals)
-          item.price.decimals === "00"
-            ? item.price.amount
-            : Number(
-                item.price.amount.toString() +
-                  "." +
-                  item.price.decimals.toString()
-              );
         return (
           <Item
             key={item.id}
