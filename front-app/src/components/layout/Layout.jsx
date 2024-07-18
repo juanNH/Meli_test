@@ -1,13 +1,11 @@
-import { Outlet } from 'react-router-dom';
-import {Appbar} from './appbar/Appbar';
-import './Layout.scss';
-export const Layout = () => {
+import { Outlet } from "react-router-dom";
+import { Appbar } from "./appbar/Appbar";
+import "./Layout.scss";
+export const Layout = ({ children }) => {
   return (
     <>
       <Appbar />
-      <main>
-        <Outlet />
-      </main>
+      <main>{children ? children : <Outlet />}</main>
     </>
   );
 };
