@@ -10,15 +10,15 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: LazyLoad(() => import("./pages/Page")),
+        element: LazyLoad(() => import("./pages/PageHome")),
       },
       {
         path: "/items",
-        element: LazyLoad(() => import("./pages/items/Page")),
+        element: LazyLoad(() => import("./pages/items/PageItems")),
       },
       {
         path: "/items/:id",
-        element: LazyLoad(() => import("./pages/items/[id]/Page")),
+        element: LazyLoad(() => import("./pages/items/[id]/PageItemId")),
       },
     ],
   },

@@ -15,17 +15,17 @@ export const Item = ({
   return (
     <div className="product-item" onClick={() => navigate(`/items/${id}`)}>
       <div className="product-image">
-        <img src={picture} alt="Producto 1" />
+        <img src={picture} alt={title}/>
       </div>
       <div className="product-details">
-        <div className="product-title">
+        <div className="product-price">
           ${price}
           {free_shipping}{" "}
-          {free_shipping && <img src={shipping} alt={"Free shipping"} />}
+          {free_shipping && <img src={shipping} alt="Free shipping" />}
         </div>
         <div className="product-description">{title}</div>
       </div>
-      <div className="product-price">{condition}</div>
+      <div className="product-condition">{condition}</div>
     </div>
   );
 };

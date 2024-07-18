@@ -29,7 +29,7 @@ class ItemsService {
           categories.push(c.name);
         });
     }
-    for (const result of responseItems.results) {
+    for (const result of responseItems.results.slice(0, 4)) {
       const condition = result.attributes.find(
         (at) => at.id === "ITEM_CONDITION"
       );
@@ -77,8 +77,8 @@ class ItemsService {
       description: detailData.plain_text,
     });
     const author = new Author({
-      name: searchParamsDto.author.name,
-      lastname: searchParamsDto.author.lastname,
+      name: getByIdDto.author.name,
+      lastname: getByIdDto.author.lastname,
     });
     const item = new ItemDetailResponse({ item: itemDetail, author });
     return item;
