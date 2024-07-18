@@ -7,7 +7,6 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), "");
   const processEnv = {};
   envKeys.forEach((key) => (processEnv[key] = env[key]));
-  console.log(processEnv);
   return {
     define: {
       "process.env": processEnv,

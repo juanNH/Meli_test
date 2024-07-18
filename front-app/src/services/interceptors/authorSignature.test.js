@@ -13,7 +13,6 @@ describe("interceptor", () => {
     await fetch(url);
 
     expect(mockFetch).toHaveBeenCalledTimes(1);
-    console.log(mockFetch.mock);
     expect(mockFetch).toHaveBeenCalledWith(
       url,
       expect.objectContaining({
@@ -31,7 +30,6 @@ describe("interceptor", () => {
     await fetch(url, { headers });
 
     expect(mockFetch).toHaveBeenCalledTimes(1);
-    console.log(mockFetch.mock);
     expect(mockFetch).toHaveBeenCalledWith(
       url,
       expect.objectContaining({
