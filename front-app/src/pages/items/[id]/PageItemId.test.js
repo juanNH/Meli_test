@@ -55,6 +55,16 @@ describe("Page Component", () => {
     expect(decimals).toBeInTheDocument();
     expect(description).toBeInTheDocument();
   });
+  it("renders not found item when complete", () => {
+
+    useItem.mockReturnValue({ item: undefined, isLoading: false });
+
+    render(<Page />);
+
+    const notFoundTitle = screen.getByRole("heading",{ level: 2, name: /Parece que no se puede encontrar el producto!/i });
+
+    expect(notFoundTitle).toBeInTheDocument();
+  });
   it("renders item data when loading is complete but decimals is 0", () => {
     const mockItem = {
       item: {

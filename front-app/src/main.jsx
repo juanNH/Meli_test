@@ -3,10 +3,16 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { LazyLoad, Layout } from "./components/layout";
 import "./styles/main.scss";
 import { interceptor } from "./services/interceptors/authorSignature";
+import { NotFound } from "./pages/NotFound";
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout />,
+    errorElement: (
+      <Layout>
+        <NotFound />
+      </Layout>
+    ),
     children: [
       {
         path: "/",

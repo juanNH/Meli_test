@@ -5,6 +5,7 @@ const ItemsDetail = require("./../entities/itemDetail.entity");
 const ItemDetailResponse = require("./../entities/itemDetailResponse.entity");
 const Price = require("./../entities/price.entity");
 const getNumberAndDecimal = require("./../../../commons/helpers/getDecimal");
+const { HttpError } = require('./../../../middleware/errorHandler');
 class ItemsService {
   constructor(itemRepository) {
     this.itemRepository = itemRepository;
@@ -13,6 +14,7 @@ class ItemsService {
     const responseItems = await this.itemRepository.getAllItems(
       searchParamsDto
     );
+    responseItems.results = responseItems.results.slice(0, 4);
     const author = new Author({
       name: searchParamsDto.author.name,
       lastname: searchParamsDto.author.lastname,
@@ -29,7 +31,7 @@ class ItemsService {
           categories.push(c.name);
         });
     }
-    for (const result of responseItems.results.slice(0, 4)) {
+    for (const result of responseItems.results) {
       const condition = result.attributes.find(
         (at) => at.id === "ITEM_CONDITION"
       );
@@ -58,6 +60,9 @@ class ItemsService {
       itemPromise,
       detailPromise,
     ]);
+    if(itemData === undefined || detailData === undefined){
+      throw new HttpError(404, 'Item data not found');
+    }
     const { number: amount, decimal } = getNumberAndDecimal(itemData.price);
     const condition = itemData.attributes.find(
       (at) => at.id === "ITEM_CONDITION"

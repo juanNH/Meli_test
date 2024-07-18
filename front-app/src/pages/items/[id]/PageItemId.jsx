@@ -6,10 +6,17 @@ import { ProductDescription } from "./components/productDescription/ProductDescr
 import "./PageItemId.scss";
 const PageItemId = () => {
   const { item, isLoading } = useItem();
-  if (!item || isLoading) {
+  if (isLoading) {
     return (
       <div className="product-view">
         <div className="skeleton" data-testid="skeleton-loader"></div>
+      </div>
+    );
+  }
+  if (!item && !isLoading) {
+    return (
+      <div className="product-view">
+        <div className="skeleton" data-testid="skeleton-loader"><h2>Parece que no se puede encontrar el producto!</h2></div>
       </div>
     );
   }

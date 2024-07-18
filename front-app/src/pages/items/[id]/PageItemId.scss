@@ -26,4 +26,8 @@ $background-color: #ffffff;
     background-color: #e0e0e0;
     animation: shimmer 1.5s infinite linear;
     margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
   }
