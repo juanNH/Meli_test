@@ -6,6 +6,9 @@ export const Layout = ({ children }) => {
     <>
       <Appbar />
       <main>{children ? children : <Outlet />}</main>
+      <footer>
+        <p>Repositorio: <a href="https://github.com/juanNH/Meli_test" alt="Github">Github</a></p>
+      </footer>
     </>
   );
 };

@@ -8,20 +8,20 @@ const PageItemId = () => {
   const { item, isLoading } = useItem();
   if (isLoading) {
     return (
-      <div className="product-view">
+      <section className="product-view">
         <div className="skeleton" data-testid="skeleton-loader"></div>
-      </div>
+      </section>
     );
   }
   if (!item && !isLoading) {
     return (
-      <div className="product-view">
+      <section className="product-view">
         <div className="skeleton" data-testid="skeleton-loader"><h2>Parece que no se puede encontrar el producto!</h2></div>
-      </div>
+      </section>
     );
   }
   return (
-    <div className="product-view">
+    <section className="product-view">
       <div className="container">
         <div className="row">
           <ProductImage picture={item.item.picture+'ssqqwqd'} alt={item.item.title} />
@@ -35,7 +35,7 @@ const PageItemId = () => {
         </div>
         <ProductDescription description={item.item.description} />
       </div>
-    </div>
+    </section>
   );
 };
 export default PageItemId;

@@ -1,5 +1,8 @@
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #EDEDED;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  height: 100%;
+  background-color: #ededed;
+  position: relative;
+  min-height: 100vh;
 }

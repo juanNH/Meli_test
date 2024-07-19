@@ -25,10 +25,12 @@ export const Appbar = () => {
   return (
       <header className="appbar">
         <div className="appbar-container">
-          <div className="appbar-logo" onClick={()=> navigate('/')}>
+          <div className="appbar-logo">
+            <a href="/" aria-label="Go to homepage">
             <img src={logo} alt="Logo Meli" />
+            </a>
           </div>
-          <form className="appbar-search" onSubmit={handleSubmit}>
+          <form role="search" className="appbar-search" onSubmit={handleSubmit}>
             <input
               value={queu}
               onChange={handleChangeInput}
@@ -36,7 +38,7 @@ export const Appbar = () => {
               className="search-input"
               placeholder="Buscar productos, marcas y más..."
             />
-            <button type="submit" className="search-button">
+            <button type="submit" className="search-button" aria-label="Buscar">
               <img src={searchLogo} alt="Buscar" />
             </button>
           </form>

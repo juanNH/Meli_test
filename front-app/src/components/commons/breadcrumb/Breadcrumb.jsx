@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 //import './Breadcrumb.scss';
 export const Breadcrumb = ({categories}) => {
   return (
-      <div className="breadcrumb">
+      <section className="breadcrumb">
         {categories.map((category, index) => (
           <span key={category} className="breadcrumb-item">
             {category}
@@ -11,7 +11,7 @@ export const Breadcrumb = ({categories}) => {
             )}
           </span>
         ))}
-      </div>
+      </section>
   );
 };
 

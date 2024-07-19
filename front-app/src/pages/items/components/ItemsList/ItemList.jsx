@@ -5,15 +5,15 @@ import "./ItemsList.scss";
 export const ItemList = ({ items, isLoading }) => {
   if (isLoading) {
     return (
-      <div className="product-list">
+      <section className="product-list">
         {Array.from({ length: 4 }).map((_, index) => (
           <div className="skeleton-item" key={index} data-testid="skeleton-item"/>
         ))}
-      </div>
+      </section>
     );
   }
   return (
-    <div className="product-list">
+    <section className="product-list">
       {items.map((item) => {
         const price = priceFormat(item.price.amount, item.price.decimals)
         return (
@@ -28,7 +28,7 @@ export const ItemList = ({ items, isLoading }) => {
           />
         );
       })}
-    </div>
+    </section>
   );
 };
 

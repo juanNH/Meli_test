@@ -8,7 +8,7 @@ export const ProductData = ({
   title,
 }) => {
   return (
-    <div className="product-data">
+    <section className="product-data">
       <p>
         {condition} - {sold_quantity} vendidos
       </p>
@@ -19,8 +19,8 @@ export const ProductData = ({
           <span className="product-detail-price-decimals">{decimals}</span>
         </div>
       </div>
-      <button className="product-data-button">Comprar</button>
-    </div>
+      <button className="product-data-button" aria-label="Comprar">Comprar</button>
+    </section>
   );
 };
 

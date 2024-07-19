@@ -1,10 +1,10 @@
 export const NotFound = () => {
   return (
-    <div>
+    <section>
       <h2>Parece que esta página no existe!</h2>
       <p>
-        <a href="/">Ir a la página principal</a>.
+        <a href="/" alt="asd">Ir a la página principal</a>.
       </p>
-    </div>
+    </section>
   );
 };
