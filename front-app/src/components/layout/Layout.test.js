@@ -22,4 +22,17 @@ describe("Layout component", () => {
     // Check if the Outlet content is rendered
     expect(screen.getByText("Outlet Mock")).toBeInTheDocument();
   });
+  it("should render Appbar and Outlet components", () => {
+    render(
+      <MemoryRouter initialEntries={["/test"]}>
+        <Routes>
+          <Route path="/" element={<Layout><h1>children</h1></Layout>}>
+            <Route path="*" element={<div></div>} />
+          </Route>
+        </Routes>
+      </MemoryRouter>
+    );
+    const notFoundTitle = screen.getByRole("heading",{ level: 1, name: /children/i });
+    expect(notFoundTitle).toBeInTheDocument();
+  });
 });

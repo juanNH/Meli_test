@@ -10,7 +10,7 @@ const {
   searchParamsDto,
   getByIdDto,
   responseMockFetchItemsEmpty,
-} = require("./mocks");
+} = require("./../../tests/mocks");
 
 jest.mock("./../repositories/items.repository");
 

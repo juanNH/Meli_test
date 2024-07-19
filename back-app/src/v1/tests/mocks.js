@@ -3822,7 +3822,7 @@ const responseMockFetchItemsEmpty = {
     user_context: null,
   };
 const searchParamsDto = {
-  q: "test",
+  q: "pelota",
   author: {
     name: "Juan",
     lastname: "Herrera",

@@ -60,8 +60,12 @@ describe("ItemRepository", () => {
 
       const getByIdDto = { idItem: "123" };
       const result = await itemRepository.getItemById(getByIdDto);
-
-      expect(fetch).toHaveBeenCalledWith(`${apiBaseUrl}/items/123`);
+      expect(fetch).toHaveBeenCalledWith(`${apiBaseUrl}/items/${mockData.id}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
       expect(result).toEqual(mockData);
     });
 
@@ -101,7 +105,15 @@ describe("ItemRepository", () => {
       const getByIdDto = { idItem: "123" };
       const result = await itemRepository.getItemDetailById(getByIdDto);
 
-      expect(fetch).toHaveBeenCalledWith(`${apiBaseUrl}/items/123/description`);
+      expect(fetch).toHaveBeenCalledWith(
+        `${apiBaseUrl}/items/123/description`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
       expect(result).toEqual(mockData);
     });
 

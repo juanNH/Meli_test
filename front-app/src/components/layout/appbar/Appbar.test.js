@@ -21,10 +21,8 @@ describe('Appbar component', () => {
       </MemoryRouter>
     );
 
-    // Check if the logo is rendered
     expect(screen.getByAltText('Logo Meli')).toBeInTheDocument();
 
-    // Check if the search input and button are rendered
     expect(screen.getByPlaceholderText('Buscar productos, marcas y más...')).toBeInTheDocument();
     expect(screen.getByAltText('Buscar')).toBeInTheDocument();
   });
@@ -38,10 +36,8 @@ describe('Appbar component', () => {
 
     const searchInput = screen.getByPlaceholderText('Buscar productos, marcas y más...');
 
-    // Simulate user typing into the search input
     fireEvent.change(searchInput, { target: { value: 'example search' } });
 
-    // Check if the input value is updated
     expect(searchInput.value).toBe('example search');
   });
 
@@ -57,16 +53,25 @@ describe('Appbar component', () => {
     const searchInput = screen.getByPlaceholderText('Buscar productos, marcas y más...');
     const searchButton = screen.getByAltText('Buscar');
 
-    // Simulate user typing into the search input
     const valueSearch = 'pelota roja';
     const finalSearch = valueSearch.replace(" ","%20");
     fireEvent.change(searchInput, { target: { value: finalSearch } });
 
-    // Simulate form submission
     fireEvent.submit(searchButton);
 
-    // Check if useNavigate is called with the correct URL
     expect(searchButton).toBeInTheDocument();
     expect(navigate).toHaveBeenCalledWith(`/items?search=${finalSearch}`);
+  });
+  it('should navigate to the home page when logo is clicked', () => {
+    const navigate = jest.fn();
+    require('react-router-dom').useNavigate.mockReturnValue(navigate);
+    render(
+      <MemoryRouter>
+        <Appbar />
+      </MemoryRouter>
+    );
+    const logo = screen.getByAltText('Logo Meli');
+    fireEvent.click(logo);
+    expect(navigate).toHaveBeenCalledWith('/');
   });
 });
