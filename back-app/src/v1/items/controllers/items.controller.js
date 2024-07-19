@@ -10,7 +10,7 @@ const getItems = async (req, res, next) => {
     const items = await itemsService.getItems(
       new SearchParamDto(req.query.q, req.author.name, req.author.lastname)
     );
-    res.json(items);
+    return res.json(items);
   } catch (error) {
     next(error);
   }
@@ -19,7 +19,9 @@ const getItems = async (req, res, next) => {
 const getItemById = async (req, res, next) => {
   try {
     const itemId = req.params.id;
-    const item = await itemsService.getItemById(new GetByIdDto(itemId, req.author.name, req.author.lastname));
+    const item = await itemsService.getItemById(
+      new GetByIdDto(itemId, req.author.name, req.author.lastname)
+    );
     res.json(item);
   } catch (error) {
     next(error);

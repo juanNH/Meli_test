@@ -5,7 +5,7 @@ const ItemsDetail = require("./../entities/itemDetail.entity");
 const ItemDetailResponse = require("./../entities/itemDetailResponse.entity");
 const Price = require("./../entities/price.entity");
 const getNumberAndDecimal = require("./../../../commons/helpers/getDecimal");
-const { HttpError } = require('./../../../middleware/errorHandler');
+const { HttpError } = require("../../../middleware/errorHandler.middleware");
 class ItemsService {
   constructor(itemRepository) {
     this.itemRepository = itemRepository;
@@ -60,8 +60,8 @@ class ItemsService {
       itemPromise,
       detailPromise,
     ]);
-    if(itemData === undefined || detailData === undefined){
-      throw new HttpError(404, 'Item data not found');
+    if (itemData === undefined || detailData === undefined) {
+      throw new HttpError(404, "Item data not found");
     }
     const { number: amount, decimal } = getNumberAndDecimal(itemData.price);
     const condition = itemData.attributes.find(

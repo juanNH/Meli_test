@@ -10,7 +10,7 @@ class ItemRepository {
       new URLSearchParams({ q: searchParams.q });
     return fetch(url)
       .then((response) => {
-        if (response.ok) {
+        if (response.json) {
           return response
             .json()
             .then((jsonResponse) => {
@@ -28,7 +28,12 @@ class ItemRepository {
 
   async getItemById(getByIdDto) {
     const urlItem = this.apiBaseUrl + `/items/${getByIdDto.idItem}`;
-    return fetch(urlItem)
+    return fetch(urlItem, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
       .then((response) => {
         if (response.ok) {
           return response
@@ -48,7 +53,12 @@ class ItemRepository {
   async getItemDetailById(getByIdDto) {
     const urlDetail =
       this.apiBaseUrl + `/items/${getByIdDto.idItem}/description`;
-    return fetch(urlDetail)
+    return fetch(urlDetail, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
       .then((response) => {
         if (response.ok) {
           return response
