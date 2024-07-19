@@ -1,7 +1,6 @@
 const errorHandler = (err, req, res, next) => {
-  console.error(err);
   if (err instanceof HttpError) {
-    console.error(err.message); // Log the error for debugging
+    console.error(err.message);
     return res.status(err.statusCode).send({ message: err.message });
   } else {
     console.error(err);

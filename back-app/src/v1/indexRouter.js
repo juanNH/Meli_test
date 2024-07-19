@@ -61,7 +61,6 @@ router.get("/ping", (req, res) => {
  *                   example: {"name":"Juan","lastname":"Herrera"}
  */
 router.post("/author", (req, res) => {
-  console.log(req.body);
   res.json({
     response: {name:req.body.name,lastname: req.body.lastname},
   });

@@ -3,7 +3,7 @@ const dotenv = require("dotenv");
 const cors = require("cors");
 const swaggerJsdoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
-const { errorHandler } = require("./src/middleware/errorHandler");
+const { errorHandler } = require("./src/middleware/errorHandler.middleware");
 
 dotenv.config();
 
