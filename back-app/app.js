@@ -37,7 +37,6 @@ const swaggerDefinition = {
           free_shipping: { type: "boolean" },
           sold_quantity: { type: "integer" },
           description: { type: "string" },
-          author: { $ref: "#/components/schemas/Author" }, // Reference to Author schema
         },
       },
       Item: {
@@ -49,7 +48,6 @@ const swaggerDefinition = {
           picture: { type: "string" },
           condition: { type: "string" },
           free_shipping: { type: "boolean" },
-          author: { $ref: "#/components/schemas/Author" }, // Reference to Author schema
         },
       },
       Author: {
@@ -63,6 +61,23 @@ const swaggerDefinition = {
         type: "object",
         properties: {
           message: { type: "string" },
+        },
+      },
+      ItemsByIdResponse: {
+        type: "object",
+        properties: {
+          author: { $ref: "#/components/schemas/Author" },
+          item: { $ref: "#/components/schemas/ItemDetail" },
+        },
+      },
+      ItemsResponse: {
+        type: "object",
+        properties: {
+          author: { $ref: "#/components/schemas/Author" },
+          items: {
+            type: "array",
+            items: { $ref: "#/components/schemas/Item" },
+          },
         },
       },
     },

@@ -3,7 +3,7 @@ import "./ProductImage.scss";
 export const ProductImage = ({ picture, alt }) => {
   return (
     <section className="product-image">
-      <img src={picture} alt={alt} />
+      <img src={picture} alt={alt} title={alt} role="img" loading="lazy"/>
     </section>
   );
 };

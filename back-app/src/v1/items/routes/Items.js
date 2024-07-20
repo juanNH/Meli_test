@@ -29,7 +29,7 @@ const { getItems, getItemById } = require("./../controllers/items.controller");
  *             schema:
  *               type: array
  *               items:
- *                 $ref: '#/components/schemas/Item'
+ *                 $ref: '#/components/schemas/ItemsResponse'
  */
 router.get("/", getItems);
 
@@ -58,7 +58,7 @@ router.get("/", getItems);
  *         content:
  *           application/json:
  *             schema:
- *               $ref: '#/components/schemas/ItemDetail'
+ *               $ref: '#/components/schemas/ItemsByIdResponse'
  *       404:
  *         description: Not found id
  *         content:

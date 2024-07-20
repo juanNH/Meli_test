@@ -27,7 +27,7 @@ export const Appbar = () => {
         <div className="appbar-container">
           <div className="appbar-logo">
             <a href="/" aria-label="Go to homepage">
-            <img src={logo} alt="Logo Meli" />
+            <img src={logo} alt="Logo Meli" title="Ir a menu" role="img" loading="lazy"/>
             </a>
           </div>
           <form role="search" className="appbar-search" onSubmit={handleSubmit}>
@@ -38,8 +38,8 @@ export const Appbar = () => {
               className="search-input"
               placeholder="Buscar productos, marcas y más..."
             />
-            <button type="submit" className="search-button" aria-label="Buscar">
-              <img src={searchLogo} alt="Buscar" />
+            <button type="submit" className="search-button" aria-label="Buscar" title={`Buscar ${queu}`}>
+              <img src={searchLogo} alt="Buscar" title={`Buscar ${queu}`} role="img" loading="lazy"/>
             </button>
           </form>
         </div>

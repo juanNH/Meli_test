@@ -19,7 +19,7 @@ export const ProductData = ({
           <span className="product-detail-price-decimals">{decimals}</span>
         </div>
       </div>
-      <button className="product-data-button" aria-label="Comprar">Comprar</button>
+      <button className="product-data-button" aria-label="Comprar" title="Comprar">Comprar</button>
     </section>
   );
 };

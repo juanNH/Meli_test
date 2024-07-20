@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 //import './Breadcrumb.scss';
 export const Breadcrumb = ({categories}) => {
   return (
-      <section className="breadcrumb">
+      <section className="breadcrumb" aria-label="Categorias">
         {categories.map((category, index) => (
           <span key={category} className="breadcrumb-item">
             {category}

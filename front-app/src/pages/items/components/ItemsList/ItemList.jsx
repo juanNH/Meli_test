@@ -13,7 +13,7 @@ export const ItemList = ({ items, isLoading }) => {
     );
   }
   return (
-    <section className="product-list">
+    <section className="product-list" aria-label="Listado de productos">
       {items.map((item) => {
         const price = priceFormat(item.price.amount, item.price.decimals)
         return (
